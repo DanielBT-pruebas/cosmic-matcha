@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Por qué €13/día no puede funcionar – Cosmic Matcha</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f4f1ec; color: #1a1a1a; line-height: 1.6; }
+
+  .header {
+    background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 60%, #7db87a 100%);
+    color: white;
+    padding: 52px 48px 44px;
+  }
+  .logo-pill { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 50px; padding: 6px 18px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+  .header h1 { font-size: 36px; font-weight: 800; line-height: 1.2; margin-bottom: 12px; }
+  .header p { font-size: 16px; opacity: 0.85; max-width: 600px; line-height: 1.7; }
+
+  .container { max-width: 820px; margin: 0 auto; padding: 48px 24px; }
+
+  .block {
+    background: white;
+    border-radius: 16px;
+    padding: 32px 36px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 28px;
+  }
+  .block h2 { font-size: 20px; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .block p { font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 14px; }
+  .block p:last-child { margin-bottom: 0; }
+  .block strong { color: #1a1a1a; }
+
+  /* Analogía destacada */
+  .analogy {
+    background: #f0f7f0;
+    border-left: 4px solid #4a7c59;
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 15px;
+    color: #2d4a2d;
+    line-height: 1.8;
+  }
+
+  /* Círculo vicioso */
+  .cycle { display: flex; flex-direction: column; gap: 0; margin: 20px 0; }
+  .cycle-step {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px dashed #e0dbd0;
+  }
+  .cycle-step:last-child { border-bottom: none; }
+  .cycle-num {
+    width: 34px; height: 34px; border-radius: 50%;
+    color: white; font-weight: 800; font-size: 14px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .cycle-step p { margin: 0; font-size: 15px; color: #444; line-height: 1.7; }
+
+  .cycle-warning {
+    background: #fff1ee;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #c0331a;
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  /* Tabla */
+  .table-wrap { border-radius: 12px; overflow: hidden; border: 1px solid #e8e2d8; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: #f8f6f2; padding: 12px 16px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #888; font-weight: 700; }
+  td { padding: 14px 16px; border-top: 1px solid #f0ede8; vertical-align: middle; }
+  tr.highlight td { background: #f0f7f0; }
+  tr.current td { background: #fff5f3; }
+  .badge { display: inline-block; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; }
+  .badge.no { background: #ffe0d8; color: #c0331a; }
+  .badge.maybe { background: #fff3d8; color: #a06010; }
+  .badge.yes { background: #e0f0e0; color: #2d6e2d; }
+
+  /* Propuesta */
+  .proposal {
+    background: linear-gradient(135deg, #2d5a27, #4a7c59);
+    border-radius: 16px;
+    padding: 32px 36px;
+    color: white;
+    margin-bottom: 28px;
+  }
+  .proposal h2 { font-size: 20px; font-weight: 800; margin-bottom: 14px; }
+  .proposal p { font-size: 15px; opacity: 0.9; line-height: 1.8; margin-bottom: 12px; }
+  .proposal p:last-child { margin-bottom: 0; }
+  .proposal strong { color: #c8e6c0; }
+
+  /* Nota final */
+  .note {
+    background: #fff8ee;
+    border-left: 4px solid #d97706;
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    font-size: 14px;
+    color: #5a3a00;
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  footer { text-align: center; padding: 32px; font-size: 12px; color: #aaa; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-pill">🍵 Cosmic Matcha · Facebook Ads</div>
+  <h1>Por qué €13/día hace casi imposible conseguir resultados</h1>
+  <p>Una explicación clara de cómo funciona la publicidad en Meta y qué necesita para rendir de verdad.</p>
+</div>
+
+<div class="container">
+
+  <!-- 1. Cómo funciona el algoritmo -->
+  <div class="block">
+    <h2>⚙️ Primero, cómo funciona el algoritmo de Meta</h2>
+    <p>Cuando lanzamos un anuncio en Facebook o Instagram optimizado para ventas, el sistema no sabe desde el primer día a quién mostrárselo. Necesita un período de <strong>aprendizaje</strong>: un tiempo en el que prueba diferentes perfiles de personas para descubrir quién tiene más probabilidad de comprar.</p>
+    <p>Durante esa fase, el rendimiento es irregular y el coste por compra es más alto de lo normal. <strong>Es completamente normal y esperado.</strong> El problema es que para que ese aprendizaje ocurra, Meta necesita datos — y los datos son compras reales.</p>
+    <p>Meta establece oficialmente que necesita un mínimo de <strong>50 compras por semana</strong> para salir de la fase de aprendizaje y empezar a optimizar de verdad. Por debajo de ese umbral, el algoritmo nunca termina de aprender.</p>
+
+    <div class="analogy">
+      <strong>Una analogía:</strong> imagina que contratas a un comercial nuevo. Le dices que tiene que aprender qué tipo de cliente compra tu producto, pero solo puede hacer 2 o 3 visitas al mes porque el presupuesto es justo. Después de 6 meses, habrá hecho unas 15 visitas. Con tan poca experiencia acumulada, es imposible que haya aprendido quién compra y quién no. Necesitaría hacer muchas más visitas, con más frecuencia, para desarrollar ese criterio. El algoritmo de Meta funciona exactamente igual.
+    </div>
+  </div>
+
+  <!-- 2. Los números reales -->
+  <div class="block">
+    <h2>📊 Los números reales de Cosmic Matcha</h2>
+    <p>Actualmente la cuenta invierte <strong>€13/día</strong> con un coste por compra (CPP) de aproximadamente <strong>€38</strong>. Esto significa que el algoritmo genera, en el mejor de los casos, <strong>unas 10 compras al mes</strong>.</p>
+    <p>Para que Meta pueda optimizar correctamente, necesitamos 50 compras por semana — es decir, <strong>200 compras al mes</strong>. Estamos generando el 5% de lo que el sistema necesita para aprender.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Escenario</th>
+            <th>Budget diario</th>
+            <th>Coste por compra estimado</th>
+            <th>Compras/mes</th>
+            <th>¿El algoritmo aprende?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="current">
+            <td><strong>Situación actual</strong></td>
+            <td>€13/día</td>
+            <td>~€38</td>
+            <td><strong style="color:#e85c33">~10</strong></td>
+            <td><span class="badge no">❌ Nunca</span></td>
+          </tr>
+          <tr>
+            <td>Mínimo viable</td>
+            <td>€30/día</td>
+            <td>~€28 *</td>
+            <td><strong style="color:#d97706">~32</strong></td>
+            <td><span class="badge maybe">⚠️ Difícilmente</span></td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>Escenario recomendado</strong></td>
+            <td><strong>€45/día</strong></td>
+            <td>~€22 *</td>
+            <td><strong style="color:#2d6e2d">~60</strong></td>
+            <td><span class="badge yes">✅ Sí, y mejora</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#aaa;margin-top:-10px;">* A mayor presupuesto, el coste por compra tiende a bajar porque el algoritmo encuentra audiencias más eficientes. Estimaciones basadas en el rendimiento actual de la cuenta.</p>
+  </div>
+
+  <!-- 3. El círculo vicioso -->
+  <div class="block">
+    <h2>🔄 El círculo vicioso en el que estamos ahora</h2>
+    <p>Entendemos perfectamente la lógica de no querer invertir más si no se ven resultados. Es una decisión razonable. El problema es que en publicidad de Meta, esa lógica crea una trampa de la que es muy difícil salir:</p>
+
+    <div class="cycle">
+      <div class="cycle-step">
+        <div class="cycle-num" style="background:#e85c33;">1</div>
+        <p>Con €13/día, el algoritmo genera muy pocas compras al mes. <strong>No hay suficientes datos para aprender</strong> quién es el comprador ideal de Cosmic Matcha.</p>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num" style="background:#d97706;">2</div>
+        <p>Sin ese aprendizaje, el algoritmo muestra los anuncios a personas <strong>poco cualificadas</strong>. El coste por compra se mantiene alto y la rentabilidad no mejora.</p>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num" style="background:#d97706;">3</div>
+        <p>Al no ver rentabilidad, la decisión lógica es <strong>no aumentar el presupuesto</strong>. Completamente comprensible — pero aquí está la trampa.</p>
+      </div>
+      <div class="cycle-step">
+        <div class="cycle-num" style="background:#e85c33;">4</div>
+        <p>Al no aumentar el presupuesto, <strong>el algoritmo nunca aprende</strong>, el coste por compra nunca baja, y la rentabilidad nunca llega. Volvemos al punto 1.</p>
+      </div>
+    </div>
+
+    <div class="cycle-warning">
+      ⚠️ Podemos seguir así 6 meses más y el resultado será exactamente el mismo. No porque la estrategia sea mala, sino porque el sistema no tiene el combustible mínimo para funcionar.
+    </div>
+  </div>
+
+  <!-- 4. Lo que sí sabemos que funciona -->
+  <div class="block">
+    <h2>✅ Lo que los datos actuales ya nos están diciendo</h2>
+    <p>A pesar del presupuesto limitado, hay señales muy positivas en la cuenta que demuestran que el producto y la audiencia funcionan:</p>
+    <p>→ Tenemos un anuncio (<em>Video 25 - 10% descuento</em>) con un coste por compra de <strong>€17</strong> — prácticamente la mitad del promedio de la cuenta. Eso es un resultado excelente que demuestra que hay demanda real.</p>
+    <p>→ El coste por mil impresiones (CPM) de <strong>€5,50</strong> es muy competitivo para el sector ecommerce en Meta. El inventario publicitario no es caro para Cosmic Matcha.</p>
+    <p>→ La campaña de retargeting (personas que ya visitaron la web) generó compras a <strong>€17,55</strong> cuando estuvo activa. Hay personas que llegan a la web y quieren comprar.</p>
+    <p>El problema no es el producto, no es la marca, no es la audiencia. <strong>El problema es que el sistema no tiene suficiente presupuesto para encontrar a esas personas de forma consistente y escalable.</strong></p>
+  </div>
+
+  <!-- 5. Propuesta -->
+  <div class="proposal">
+    <h2>💡 La propuesta: una prueba cerrada de 30 días</h2>
+    <p>En lugar de un incremento de presupuesto indefinido, proponemos algo concreto y acotado: <strong>30 días a €40/día</strong> (~€1.200 en total) con la estructura optimizada — el anuncio ganador escalado y el retargeting activo.</p>
+    <p>Al final de esos 30 días tendremos datos reales para tomar una decisión informada. Si la rentabilidad mejora (y todo indica que lo hará), escalaremos con confianza. Si por alguna razón no mejora, lo reevaluamos todo con información mucho más sólida de la que tenemos ahora.</p>
+    <p>Lo que sí podemos afirmar con certeza es que <strong>con €13/día esos datos nunca los tendremos</strong> — y estaremos en el mismo punto dentro de 3, 6 y 12 meses.</p>
+  </div>
+
+  <!-- Nota final -->
+  <div class="note">
+    <strong>Una reflexión final:</strong> entendemos que invertir más cuando no se ven resultados genera desconfianza. Es una reacción completamente humana y lógica. Pero en este caso, la falta de resultados no es una señal de que la estrategia no funciona — es una consecuencia directa de no tener el presupuesto mínimo para que el sistema pueda demostrar si funciona o no. Estamos pidiendo la oportunidad de tener esa demostración, con un compromiso de tiempo y dinero claro y acotado.
+  </div>
+
+</div>
+
+<footer>Cosmic Matcha · Facebook Ads · Mayo 2026</footer>
+
+</body>
+</html>
